@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 13688a975285a3947a306e551e550360
+timeCreated: 1446645326
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - CanonBallprefab: {fileID: 152372, guid: 2dc95caae8d672b4a89c7ff4236cdd8f, type: 2}
+  - projectile: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
