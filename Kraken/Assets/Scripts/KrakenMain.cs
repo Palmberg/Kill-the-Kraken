@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Main : MonoBehaviour
+public class KrakenMain : MonoBehaviour
 {
     public int moveSpeed = 10;
     private GameObject characterRight;
@@ -60,6 +60,10 @@ public class Main : MonoBehaviour
             {
                 characterLeft.transform.position -= (movement / moveSpeed);
             }
+        }
+        if (Input.GetKey(KeyCode.X))
+        {
+            Application.LoadLevel("World");
         }
     }
     //void Shoot()
