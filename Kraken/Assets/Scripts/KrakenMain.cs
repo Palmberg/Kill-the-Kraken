@@ -11,7 +11,7 @@ public class KrakenMain : MonoBehaviour
     private GameObject canonBall;
     public GameObject CanonBallprefab;
     private Rigidbody canonBallRigid;
-    private Vector3 shotMovement = new Vector3(1f, 0f, 0f);
+    //private Vector3 shotMovement = new Vector3(1f, 0f, 0f);
     private float startTime;
     private float shotTime = 5f;
     // public int x;

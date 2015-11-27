@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class WorldMain : MonoBehaviour {
 
@@ -7,7 +8,8 @@ public class WorldMain : MonoBehaviour {
     private GameObject boat;
     private Vector3 yMovement = new Vector3(0f, 1f, 0f);
     private Vector3 xMovement = new Vector3(1f, 0f, 0f);
-    private float maxRange = 4f;
+    private float maxRange = 7f;
+
 
     // Use this for initialization
     void Start()
@@ -16,40 +18,21 @@ public class WorldMain : MonoBehaviour {
         {
             boat = GameObject.Find("Boat");
         }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.touchCount > 0)
         {
             // Get movement of the finger
-            Vector3 touchPosition = Input.GetTouch(0).deltaPosition;
-            //if (boat.transform.position.y <= maxRange && boat.transform.position.x <= maxRange && boat.transform.position.y >= -maxRange && boat.transform.position.x >= -maxRange)
-            //{
-            //    // Move object across XY plane
-            //    boat.transform.position += touchPosition / 10;
-            //}
-            //else
-            //{
-            //    boat.transform.position -= touchPosition / 10; 
-            //}
-            if (touchPosition.x >= 0 && boat.transform.position.x <= maxRange)
-            {
-                boat.transform.position += new Vector3((touchPosition.x / 10),0f,0f);
-            }
-            else if (touchPosition.x < 0 && boat.transform.position.x >= -maxRange)
-            {
-                boat.transform.position += new Vector3((touchPosition.x / 10), 0f, 0f);
-            }
-            if (touchPosition.y >= 0 && boat.transform.position.y <= maxRange)
-            {
-                boat.transform.position += new Vector3(0f, (touchPosition.y / 10), 0f);
-            }
-            else if (touchPosition.y < 0 && boat.transform.position.y >= -maxRange)
-            {
-                boat.transform.position += new Vector3(0f, (touchPosition.y / 10), 0f);
-            }
+            Vector3 touchPosition = Input.GetTouch(0).position;
+            var x = (touchPosition.x-960)/108;
+            var y = (touchPosition.y-540)/108;
+            var z = touchPosition.z;
+            boat.transform.position = new Vector3(x, y, 0f);
 
         }
         if (Input.GetKey(KeyCode.UpArrow))
