@@ -1,0 +1,425 @@
+fileFormatVersion: 2
+guid: 58778841298455544b77d98ed06d2cbf
+timeCreated: 1448813624
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: Armature
+    100002: BackHead
+    100004: BackHead_end
+    100006: Chest
+    100008: Head
+    100010: Head_Ctrl
+    100012: Head_Ctrl_end
+    100014: //RootNode
+    100016: Leg01_1
+    100018: Leg01_2
+    100020: Leg01_3
+    100022: Leg01_4
+    100024: Leg01_5
+    100026: Leg01_6
+    100028: Leg01_6_end
+    100030: Leg01_IK
+    100032: Leg01_IK_end
+    100034: Leg02_1
+    100036: Leg02_2
+    100038: Leg02_3
+    100040: Leg02_4
+    100042: Leg02_5
+    100044: Leg02_6
+    100046: Leg02_6_end
+    100048: Leg02_IK
+    100050: Leg02_IK_end
+    100052: Leg03_1
+    100054: Leg03_2
+    100056: Leg03_3
+    100058: Leg03_4
+    100060: Leg03_5
+    100062: Leg03_6
+    100064: Leg03_6_end
+    100066: Leg03_IK
+    100068: Leg03_IK_end
+    100070: Leg04_1
+    100072: Leg04_2
+    100074: Leg04_3
+    100076: Leg04_4
+    100078: Leg04_5
+    100080: Leg04_6
+    100082: Leg04_6_end
+    100084: Leg04_IK
+    100086: Leg04_IK_end
+    100088: Leg05_1
+    100090: Leg05_2
+    100092: Leg05_3
+    100094: Leg05_4
+    100096: Leg05_5
+    100098: Leg05_6
+    100100: Leg05_6_end
+    100102: Leg05_IK
+    100104: Leg05_IK_end
+    100106: Leg06_1
+    100108: Leg06_2
+    100110: Leg06_3
+    100112: Leg06_4
+    100114: Leg06_5
+    100116: Leg06_6
+    100118: Leg06_6_end
+    100120: Leg06_IK
+    100122: Leg06_IK_end
+    100124: Leg07_1
+    100126: Leg07_2
+    100128: Leg07_3
+    100130: Leg07_4
+    100132: Leg07_5
+    100134: Leg07_6
+    100136: Leg07_6_end
+    100138: Leg07_IK
+    100140: Leg07_IK_end
+    100142: Leg08_1
+    100144: Leg08_2
+    100146: Leg08_3
+    100148: Leg08_4
+    100150: Leg08_5
+    100152: Leg08_6
+    100154: Leg08_6_end
+    100156: Leg08_IK
+    100158: Leg08_IK_end
+    100160: octo_bottom
+    400000: Armature
+    400002: BackHead
+    400004: BackHead_end
+    400006: Chest
+    400008: Head
+    400010: Head_Ctrl
+    400012: Head_Ctrl_end
+    400014: //RootNode
+    400016: Leg01_1
+    400018: Leg01_2
+    400020: Leg01_3
+    400022: Leg01_4
+    400024: Leg01_5
+    400026: Leg01_6
+    400028: Leg01_6_end
+    400030: Leg01_IK
+    400032: Leg01_IK_end
+    400034: Leg02_1
+    400036: Leg02_2
+    400038: Leg02_3
+    400040: Leg02_4
+    400042: Leg02_5
+    400044: Leg02_6
+    400046: Leg02_6_end
+    400048: Leg02_IK
+    400050: Leg02_IK_end
+    400052: Leg03_1
+    400054: Leg03_2
+    400056: Leg03_3
+    400058: Leg03_4
+    400060: Leg03_5
+    400062: Leg03_6
+    400064: Leg03_6_end
+    400066: Leg03_IK
+    400068: Leg03_IK_end
+    400070: Leg04_1
+    400072: Leg04_2
+    400074: Leg04_3
+    400076: Leg04_4
+    400078: Leg04_5
+    400080: Leg04_6
+    400082: Leg04_6_end
+    400084: Leg04_IK
+    400086: Leg04_IK_end
+    400088: Leg05_1
+    400090: Leg05_2
+    400092: Leg05_3
+    400094: Leg05_4
+    400096: Leg05_5
+    400098: Leg05_6
+    400100: Leg05_6_end
+    400102: Leg05_IK
+    400104: Leg05_IK_end
+    400106: Leg06_1
+    400108: Leg06_2
+    400110: Leg06_3
+    400112: Leg06_4
+    400114: Leg06_5
+    400116: Leg06_6
+    400118: Leg06_6_end
+    400120: Leg06_IK
+    400122: Leg06_IK_end
+    400124: Leg07_1
+    400126: Leg07_2
+    400128: Leg07_3
+    400130: Leg07_4
+    400132: Leg07_5
+    400134: Leg07_6
+    400136: Leg07_6_end
+    400138: Leg07_IK
+    400140: Leg07_IK_end
+    400142: Leg08_1
+    400144: Leg08_2
+    400146: Leg08_3
+    400148: Leg08_4
+    400150: Leg08_5
+    400152: Leg08_6
+    400154: Leg08_6_end
+    400156: Leg08_IK
+    400158: Leg08_IK_end
+    400160: octo_bottom
+    4300000: octo_bottom
+    7400000: KrakenIdle
+    9500000: //RootNode
+    13700000: octo_bottom
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: KrakenIdle
+      takeName: Armature|ArmatureAction
+      firstFrame: 1
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Chest
+        weight: 1
+      - path: Armature/Chest/Head
+        weight: 1
+      - path: Armature/Chest/Head/BackHead
+        weight: 1
+      - path: Armature/Chest/Head/BackHead/BackHead_end
+        weight: 1
+      - path: Armature/Chest/Leg01_1
+        weight: 1
+      - path: Armature/Chest/Leg01_1/Leg01_2
+        weight: 1
+      - path: Armature/Chest/Leg01_1/Leg01_2/Leg01_3
+        weight: 1
+      - path: Armature/Chest/Leg01_1/Leg01_2/Leg01_3/Leg01_4
+        weight: 1
+      - path: Armature/Chest/Leg01_1/Leg01_2/Leg01_3/Leg01_4/Leg01_5
+        weight: 1
+      - path: Armature/Chest/Leg01_1/Leg01_2/Leg01_3/Leg01_4/Leg01_5/Leg01_6
+        weight: 1
+      - path: Armature/Chest/Leg01_1/Leg01_2/Leg01_3/Leg01_4/Leg01_5/Leg01_6/Leg01_6_end
+        weight: 1
+      - path: Armature/Chest/Leg01_IK
+        weight: 1
+      - path: Armature/Chest/Leg01_IK/Leg01_IK_end
+        weight: 1
+      - path: Armature/Chest/Leg02_1
+        weight: 1
+      - path: Armature/Chest/Leg02_1/Leg02_2
+        weight: 1
+      - path: Armature/Chest/Leg02_1/Leg02_2/Leg02_3
+        weight: 1
+      - path: Armature/Chest/Leg02_1/Leg02_2/Leg02_3/Leg02_4
+        weight: 1
+      - path: Armature/Chest/Leg02_1/Leg02_2/Leg02_3/Leg02_4/Leg02_5
+        weight: 1
+      - path: Armature/Chest/Leg02_1/Leg02_2/Leg02_3/Leg02_4/Leg02_5/Leg02_6
+        weight: 1
+      - path: Armature/Chest/Leg02_1/Leg02_2/Leg02_3/Leg02_4/Leg02_5/Leg02_6/Leg02_6_end
+        weight: 1
+      - path: Armature/Chest/Leg03_1
+        weight: 1
+      - path: Armature/Chest/Leg03_1/Leg03_2
+        weight: 1
+      - path: Armature/Chest/Leg03_1/Leg03_2/Leg03_3
+        weight: 1
+      - path: Armature/Chest/Leg03_1/Leg03_2/Leg03_3/Leg03_4
+        weight: 1
+      - path: Armature/Chest/Leg03_1/Leg03_2/Leg03_3/Leg03_4/Leg03_5
+        weight: 1
+      - path: Armature/Chest/Leg03_1/Leg03_2/Leg03_3/Leg03_4/Leg03_5/Leg03_6
+        weight: 1
+      - path: Armature/Chest/Leg03_1/Leg03_2/Leg03_3/Leg03_4/Leg03_5/Leg03_6/Leg03_6_end
+        weight: 1
+      - path: Armature/Chest/Leg04_1
+        weight: 1
+      - path: Armature/Chest/Leg04_1/Leg04_2
+        weight: 1
+      - path: Armature/Chest/Leg04_1/Leg04_2/Leg04_3
+        weight: 1
+      - path: Armature/Chest/Leg04_1/Leg04_2/Leg04_3/Leg04_4
+        weight: 1
+      - path: Armature/Chest/Leg04_1/Leg04_2/Leg04_3/Leg04_4/Leg04_5
+        weight: 1
+      - path: Armature/Chest/Leg04_1/Leg04_2/Leg04_3/Leg04_4/Leg04_5/Leg04_6
+        weight: 1
+      - path: Armature/Chest/Leg04_1/Leg04_2/Leg04_3/Leg04_4/Leg04_5/Leg04_6/Leg04_6_end
+        weight: 1
+      - path: Armature/Chest/Leg05_1
+        weight: 1
+      - path: Armature/Chest/Leg05_1/Leg05_2
+        weight: 1
+      - path: Armature/Chest/Leg05_1/Leg05_2/Leg05_3
+        weight: 1
+      - path: Armature/Chest/Leg05_1/Leg05_2/Leg05_3/Leg05_4
+        weight: 1
+      - path: Armature/Chest/Leg05_1/Leg05_2/Leg05_3/Leg05_4/Leg05_5
+        weight: 1
+      - path: Armature/Chest/Leg05_1/Leg05_2/Leg05_3/Leg05_4/Leg05_5/Leg05_6
+        weight: 1
+      - path: Armature/Chest/Leg05_1/Leg05_2/Leg05_3/Leg05_4/Leg05_5/Leg05_6/Leg05_6_end
+        weight: 1
+      - path: Armature/Chest/Leg06_1
+        weight: 1
+      - path: Armature/Chest/Leg06_1/Leg06_2
+        weight: 1
+      - path: Armature/Chest/Leg06_1/Leg06_2/Leg06_3
+        weight: 1
+      - path: Armature/Chest/Leg06_1/Leg06_2/Leg06_3/Leg06_4
+        weight: 1
+      - path: Armature/Chest/Leg06_1/Leg06_2/Leg06_3/Leg06_4/Leg06_5
+        weight: 1
+      - path: Armature/Chest/Leg06_1/Leg06_2/Leg06_3/Leg06_4/Leg06_5/Leg06_6
+        weight: 1
+      - path: Armature/Chest/Leg06_1/Leg06_2/Leg06_3/Leg06_4/Leg06_5/Leg06_6/Leg06_6_end
+        weight: 1
+      - path: Armature/Chest/Leg07_1
+        weight: 1
+      - path: Armature/Chest/Leg07_1/Leg07_2
+        weight: 1
+      - path: Armature/Chest/Leg07_1/Leg07_2/Leg07_3
+        weight: 1
+      - path: Armature/Chest/Leg07_1/Leg07_2/Leg07_3/Leg07_4
+        weight: 1
+      - path: Armature/Chest/Leg07_1/Leg07_2/Leg07_3/Leg07_4/Leg07_5
+        weight: 1
+      - path: Armature/Chest/Leg07_1/Leg07_2/Leg07_3/Leg07_4/Leg07_5/Leg07_6
+        weight: 1
+      - path: Armature/Chest/Leg07_1/Leg07_2/Leg07_3/Leg07_4/Leg07_5/Leg07_6/Leg07_6_end
+        weight: 1
+      - path: Armature/Chest/Leg08_1
+        weight: 1
+      - path: Armature/Chest/Leg08_1/Leg08_2
+        weight: 1
+      - path: Armature/Chest/Leg08_1/Leg08_2/Leg08_3
+        weight: 1
+      - path: Armature/Chest/Leg08_1/Leg08_2/Leg08_3/Leg08_4
+        weight: 1
+      - path: Armature/Chest/Leg08_1/Leg08_2/Leg08_3/Leg08_4/Leg08_5
+        weight: 1
+      - path: Armature/Chest/Leg08_1/Leg08_2/Leg08_3/Leg08_4/Leg08_5/Leg08_6
+        weight: 1
+      - path: Armature/Chest/Leg08_1/Leg08_2/Leg08_3/Leg08_4/Leg08_5/Leg08_6/Leg08_6_end
+        weight: 1
+      - path: Armature/Head_Ctrl
+        weight: 1
+      - path: Armature/Head_Ctrl/Head_Ctrl_end
+        weight: 1
+      - path: Armature/Leg02_IK
+        weight: 1
+      - path: Armature/Leg02_IK/Leg02_IK_end
+        weight: 1
+      - path: Armature/Leg03_IK
+        weight: 1
+      - path: Armature/Leg03_IK/Leg03_IK_end
+        weight: 1
+      - path: Armature/Leg04_IK
+        weight: 1
+      - path: Armature/Leg04_IK/Leg04_IK_end
+        weight: 1
+      - path: Armature/Leg05_IK
+        weight: 1
+      - path: Armature/Leg05_IK/Leg05_IK_end
+        weight: 1
+      - path: Armature/Leg06_IK
+        weight: 1
+      - path: Armature/Leg06_IK/Leg06_IK_end
+        weight: 1
+      - path: Armature/Leg07_IK
+        weight: 1
+      - path: Armature/Leg07_IK/Leg07_IK_end
+        weight: 1
+      - path: Armature/Leg08_IK
+        weight: 1
+      - path: Armature/Leg08_IK/Leg08_IK_end
+        weight: 1
+      - path: octo_bottom
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: Chest
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
