@@ -28,6 +28,34 @@ public class KrakenMain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.touchCount > 0)
+        {
+            // Get movement of the finger
+            Vector3 touchPositionL = Input.GetTouch(0).position;
+            Vector3 touchPositionR = Input.GetTouch(1).position;
+            var xl = (touchPositionL.x - 960) / 108;
+            var yl = (touchPositionL.y - 540) / 108;
+            var zl = touchPositionL.z;
+            var xr = (touchPositionR.x - 960) / 108;
+            var yr = (touchPositionR.y - 540) / 108;
+            var zr = touchPositionR.z;
+            if (xl < 0)
+            {
+                characterLeft.transform.position = new Vector3(-7.5f, yl, -0.5f);
+            }
+            else if (xl > 0)
+            {
+                characterRight.transform.position = new Vector3(7.5f, yl, -0.5f);
+            }
+            if (xr < 0)
+            {
+                characterLeft.transform.position = new Vector3(-7.5f, yr, -0.5f);
+            }
+            else if (xr > 0)
+            {
+                characterRight.transform.position = new Vector3(7.5f, yr, -0.5f);
+            }
+        }
         if (Input.GetKey(KeyCode.UpArrow))
         {
             if (characterRight.transform.position.y <= maxRange)
