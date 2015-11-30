@@ -3,31 +3,64 @@ using System.Collections;
 
 public class KrakenMain : MonoBehaviour
 {
+    public float maxRange = 4.5f;
+    public Vector3 movement = new Vector3(0f, 1f, 0f);
+    public Vector3 drawnMovement = new Vector3(0f, 0f, 1f);
     public int moveSpeed = 10;
-    private GameObject characterRight;
-    private GameObject characterLeft;
-    private Vector3 movement = new Vector3(0f, 1f, 0f);
-    private float maxRange = 4.5f;
-    private GameObject canonBall;
-    public GameObject CanonBallprefab;
-    private Rigidbody canonBallRigid;
-    //private Vector3 shotMovement = new Vector3(1f, 0f, 0f);
-    private float startTime;
-    private float shotTime = 5f;
-    // public int x;
-    public Rigidbody projectile;
+
+    public GameObject characterRight;
+    public GameObject characterLeft;
+
+    public GameObject canonRightUp;
+    public GameObject canonRightMid;
+    public GameObject canonRightDown;
+
+    public GameObject canonLeftUp;
+    public GameObject canonLeftMid;
+    public GameObject canonLeftDown;
+
+    public GameObject canonBall;
+    public GameObject bullet;
+    public Rigidbody bulletRigid;
+
+    //This distance stands for the distance between the Right player and the right canon
+    private double distanceWithRightUp;
+    private double distanceWithRightMid;
+    private double distanceWithRightDown;
+
+    private double distanceWithLeftUp;
+    private double distanceWithLeftMid;
+    private double distanceWithLeftDown;
+
+    public Vector3 shootMovement = new Vector3(-100f, 0f, 0f);
 
     // Use this for initialization
     void Start()
     {
-        canonBallRigid = GameObject.Find("CanonBall").GetComponent<Rigidbody>();
+        canonBall = GameObject.Find("CanonBall");
         characterRight = GameObject.Find("CharacterRight");
         characterLeft = GameObject.Find("CharacterLeft");
+
+        canonLeftUp = GameObject.Find("canonLeftUp");
+        canonLeftMid = GameObject.Find("canonLeftMid");
+        canonLeftDown = GameObject.Find("canonLeftDown");
+
+        canonRightUp = GameObject.Find("canonRightUp");
+        canonRightMid = GameObject.Find("canonRightMid");
+        canonRightDown = GameObject.Find("canonRightDown");
     }
 
     // Update is called once per frame
     void Update()
     {
+        distanceWithRightUp = Mathf.Abs(characterRight.transform.position.y - canonRightUp.transform.position.y);
+        distanceWithRightMid = Mathf.Abs(characterRight.transform.position.y - canonRightMid.transform.position.y);
+        distanceWithRightDown = Mathf.Abs(characterRight.transform.position.y - canonRightDown.transform.position.y);
+
+        distanceWithLeftUp = Mathf.Abs(characterLeft.transform.position.y - canonLeftUp.transform.position.y);
+        distanceWithLeftMid = Mathf.Abs(characterLeft.transform.position.y - canonLeftMid.transform.position.y);
+        distanceWithLeftDown = Mathf.Abs(characterLeft.transform.position.y - canonLeftDown.transform.position.y);
+
         if (Input.touchCount > 0)
         {
             // Get movement of the finger
@@ -72,8 +105,18 @@ public class KrakenMain : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            //Shoot();
-            ShootRigid();
+            if (distanceWithRightUp < 1)
+            {
+                shoot(canonRightUp);
+            }
+            else if (distanceWithRightMid < 1)
+            {
+                shoot(canonRightMid);
+            }
+            else if (distanceWithRightDown < 1)
+            {
+                shoot(canonRightDown);
+            }
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -94,42 +137,33 @@ public class KrakenMain : MonoBehaviour
             Application.LoadLevel("World");
         }
     }
-    //void Shoot()
-    //{
-    //    startTime = Time.time;
-    //    // x = 0;
-    //    canonBall = (GameObject)Instantiate(CanonBallprefab, new Vector3(10.45f, characterRight.transform.position.y, -2.27f), Quaternion.identity);
-    //    shootUpdate();
-    //}
-    //void shootUpdate()
-    //{
-    //    float running = Time.time - startTime;
-
-
-    //    if (running < shotTime)
-    //    {
-    //        canonBall.transform.position -= (shotMovement);
-    //        //x += 1;
-    //    }
-
-
-    //}
-    void ShootRigid()
+    void shoot(GameObject canon)
     {
-        startTime = Time.time;
-        canonBallRigid.transform.position = characterRight.transform.position;
-        ShootRigidUpdate();
-    }
-    void ShootRigidUpdate()
-    {
-        float running = Time.time - startTime;
+        float canonPositionY = canon.transform.position.y;
 
-
-        if (running < shotTime)
+        // Right Canon
+        if (canon.transform.position.x > 0)
         {
-            Vector3 movement = new Vector3(10f,0f,0f);
-            canonBallRigid.AddForce(-movement);
+            bullet = (GameObject)Instantiate(canonBall, new Vector3(6f, canonPositionY, -2.27f), Quaternion.identity);
+            bulletRigid = bullet.GetComponent<Rigidbody>();
+            bulletRigid.AddForce(shootMovement);
+
+
+            ////Debug.Log("Bullet X position " + bullet.transform.position.x);
+            ////Once the bullet is fired, we cannot control them anymore
+            //if (bullet.transform.position.x < 0)
+            //{
+            //    Debug.Log("Bullet X position " + bullet.transform.position.x);
+            //    bullet.transform.position -= drawnMovement;
+            //}
         }
+        else
+        {
+            bullet = (GameObject)Instantiate(canonBall, new Vector3(-6f, canonPositionY, -2.27f), Quaternion.identity);
+            bulletRigid = bullet.GetComponent<Rigidbody>();
+            bulletRigid.AddForce(-shootMovement);
+        }
+
     }
-    
+
 }
