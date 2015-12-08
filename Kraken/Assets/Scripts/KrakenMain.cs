@@ -32,6 +32,12 @@ public class KrakenMain : MonoBehaviour
     private double distanceWithLeftMid;
     private double distanceWithLeftDown;
 
+	//Animation
+	private Animator animLeftCharacter;
+	private Animator animRightCharacter;
+	private Vector3 initialRotationRight;
+	private Vector3 initialRotationLeft;
+
     public Vector3 shootMovement = new Vector3(-100f, 0f, 0f);
 
     // Use this for initialization
@@ -48,11 +54,20 @@ public class KrakenMain : MonoBehaviour
         canonRightUp = GameObject.Find("canonRightUp");
         canonRightMid = GameObject.Find("canonRightMid");
         canonRightDown = GameObject.Find("canonRightDown");
+
+		animLeftCharacter = characterLeft.GetComponent<Animator>();
+		animRightCharacter = characterRight.GetComponent<Animator>();
+		initialRotationRight = characterRight.transform.rotation.eulerAngles;
+		initialRotationLeft = characterLeft.transform.rotation.eulerAngles;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+		bool rightCharacterRunning = false;
+		bool leftCharacterRunning = false;
+
         distanceWithRightUp = Mathf.Abs(characterRight.transform.position.y - canonRightUp.transform.position.y);
         distanceWithRightMid = Mathf.Abs(characterRight.transform.position.y - canonRightMid.transform.position.y);
         distanceWithRightDown = Mathf.Abs(characterRight.transform.position.y - canonRightDown.transform.position.y);
@@ -94,6 +109,8 @@ public class KrakenMain : MonoBehaviour
             if (characterRight.transform.position.y <= maxRange)
             {
                 characterRight.transform.position += (movement / moveSpeed);
+				characterRight.transform.localEulerAngles = new Vector3(-90f,0f, 0f);
+				rightCharacterRunning = true;
             }
         }
         else if (Input.GetKey(KeyCode.DownArrow))
@@ -101,6 +118,8 @@ public class KrakenMain : MonoBehaviour
             if (characterRight.transform.position.y >= -maxRange)
             {
                 characterRight.transform.position -= (movement / moveSpeed);
+				characterRight.transform.localEulerAngles = new Vector3(90f, 180f, 0f);
+				rightCharacterRunning = true;
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
@@ -123,6 +142,8 @@ public class KrakenMain : MonoBehaviour
             if (characterLeft.transform.position.y <= maxRange)
             {
                 characterLeft.transform.position += (movement / moveSpeed);
+				characterLeft.transform.localEulerAngles = new Vector3(-90f,0f, 0f);
+				leftCharacterRunning = true;
             }
         }
         else if (Input.GetKey(KeyCode.LeftControl))
@@ -130,12 +151,24 @@ public class KrakenMain : MonoBehaviour
             if (characterLeft.transform.position.y >= -maxRange)
             {
                 characterLeft.transform.position -= (movement / moveSpeed);
+				characterLeft.transform.localEulerAngles = new Vector3(90f, 180f, 0f);
+				leftCharacterRunning = true;
             }
         }
         if (Input.GetKey(KeyCode.X))
         {
             Application.LoadLevel("World");
         }
+
+		if (!rightCharacterRunning) {
+			characterRight.transform.eulerAngles = initialRotationRight;
+		}
+		if (!leftCharacterRunning) {
+			characterLeft.transform.eulerAngles = initialRotationLeft;
+			//characterLeft.transform.localEulerAngles = new Vector3(0f,90f, -90f);
+		}
+		animRightCharacter.SetBool ("IsRunning", rightCharacterRunning);
+		animLeftCharacter.SetBool ("IsRunning", leftCharacterRunning);
     }
     void shoot(GameObject canon)
     {
