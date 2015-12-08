@@ -68,10 +68,10 @@ public class KrakenMain : MonoBehaviour
             Vector3 touchPositionR = Input.GetTouch(1).position;
             var xl = (touchPositionL.x - 960) / 108;
             var yl = (touchPositionL.y - 540) / 108;
-            var zl = touchPositionL.z;
+            //var zl = touchPositionL.z;
             var xr = (touchPositionR.x - 960) / 108;
             var yr = (touchPositionR.y - 540) / 108;
-            var zr = touchPositionR.z;
+            //var zr = touchPositionR.z;
             if (xl < 0)
             {
                 characterLeft.transform.position = new Vector3(-7.5f, yl, -0.5f);
@@ -105,18 +105,7 @@ public class KrakenMain : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (distanceWithRightUp < 1)
-            {
-                shoot(canonRightUp);
-            }
-            else if (distanceWithRightMid < 1)
-            {
-                shoot(canonRightMid);
-            }
-            else if (distanceWithRightDown < 1)
-            {
-                shoot(canonRightDown);
-            }
+            rightShot();
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -135,6 +124,36 @@ public class KrakenMain : MonoBehaviour
         if (Input.GetKey(KeyCode.X))
         {
             Application.LoadLevel("World");
+        }
+    }
+    public void rightShot()
+    {
+        if (distanceWithRightUp < 1)
+        {
+            shoot(canonRightUp);
+        }
+        else if (distanceWithRightMid < 1)
+        {
+            shoot(canonRightMid);
+        }
+        else if (distanceWithRightDown < 1)
+        {
+            shoot(canonRightDown);
+        }
+    }
+    public void leftShot()
+    {
+        if (distanceWithLeftUp < 1)
+        {
+            shoot(canonLeftUp);
+        }
+        else if (distanceWithLeftMid < 1)
+        {
+            shoot(canonLeftMid);
+        }
+        else if (distanceWithLeftDown < 1)
+        {
+            shoot(canonLeftDown);
         }
     }
     void shoot(GameObject canon)
