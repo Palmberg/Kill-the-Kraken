@@ -9,6 +9,11 @@ public class WorldMain : MonoBehaviour {
     private Vector3 yMovement = new Vector3(0f, 1f, 0f);
     private Vector3 xMovement = new Vector3(1f, 0f, 0f);
     private float maxRange = 7f;
+    private GameObject camera;
+    private float xDelta=0f;
+    private float yDelta=0f;
+    private Vector3 oldCenter = new Vector3(0, 0, 0);
+    private int worldSpace = 20;
 
 
     // Use this for initialization
@@ -18,7 +23,12 @@ public class WorldMain : MonoBehaviour {
         {
             boat = GameObject.Find("Boat");
         }
-        
+        if (GameObject.Find("Main Camera"))
+        {
+            camera = GameObject.Find("Main Camera");
+            Debug.Log("Camera found");
+        }
+
     }
 
     // Update is called once per frame
@@ -29,10 +39,36 @@ public class WorldMain : MonoBehaviour {
         {
             // Get movement of the finger
             Vector3 touchPosition = Input.GetTouch(0).position;
-            var x = (touchPosition.x-960)/108;
-            var y = (touchPosition.y-540)/108;
+            var x = ((touchPosition.x-960)/108)+xDelta;
+            var y = ((touchPosition.y-540)/108)+yDelta;
             var z = touchPosition.z;
             boat.transform.position = new Vector3(x, y, 0f);
+            var yPosTmp = boat.transform.position.y - oldCenter.y;
+            var xPosTmp = boat.transform.position.x - oldCenter.x;
+            if (yPosTmp>2.5f && y < worldSpace)
+            {
+                camera.transform.position += yMovement*yPosTmp/5;
+                yDelta += yPosTmp/5;
+                oldCenter+=yMovement*yPosTmp/5;
+            }
+            else if (yPosTmp < -2.5f && y > -worldSpace)
+            {
+                camera.transform.position += yMovement * yPosTmp / 5;
+                yDelta += yPosTmp/5;
+                oldCenter += yMovement * yPosTmp / 5;
+            }
+            else if (xPosTmp > 3f && x < worldSpace)
+            {
+                camera.transform.position += xMovement * xPosTmp / 5;
+                xDelta += xPosTmp/5;
+                oldCenter += xMovement*xPosTmp/5;
+            }
+            else if (xPosTmp < -3f && x > -worldSpace)
+            {
+                camera.transform.position += xMovement * xPosTmp / 5;
+                xDelta += xPosTmp/5;
+                oldCenter += xMovement*xPosTmp/5;
+            }
 
         }
         if (Input.GetKey(KeyCode.UpArrow))
