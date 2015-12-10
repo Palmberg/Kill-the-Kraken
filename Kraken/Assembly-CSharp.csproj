@@ -46,20 +46,30 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\BoatBehavior.cs" />
+     <Compile Include="Assets\Scripts\FireLeft.cs" />
+     <Compile Include="Assets\Scripts\FireRight.cs" />
      <Compile Include="Assets\Scripts\KrakenMain.cs" />
+     <Compile Include="Assets\Scripts\Monster.cs" />
      <Compile Include="Assets\Scripts\WorldMain.cs" />
      <Compile Include="Assets\Scripts\YetiMain.cs" />
+     <Compile Include="Assets\Scripts\shotBehaviour.cs" />
      <Compile Include="Assets\Water Flow Free\Scripts\WaterFlow.cs" />
      <Compile Include="Assets\Water Flow Free\Scripts\WaterFlowDemo.cs" />
      <Compile Include="Assets\Water Flow Free\Scripts\WaterFlowOrbitCamera.cs" />
      <None Include="Assets\Wood texture floor_01\readme.txt" />
      <None Include="Assets\Water Flow Free\Shaders\Water Simple.shader" />
      <None Include="Assets\Water Flow Free\!Readme.txt" />
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="Mono.Cecil">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Mono.Cecil.dll</HintPath>
