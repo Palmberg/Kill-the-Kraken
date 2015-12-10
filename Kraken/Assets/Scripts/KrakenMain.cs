@@ -7,6 +7,10 @@ public class KrakenMain : MonoBehaviour
     public Vector3 movement = new Vector3(0f, 1f, 0f);
     public Vector3 drawnMovement = new Vector3(0f, 0f, 1f);
     public int moveSpeed = 10;
+    private float rightTime=0f;
+    private float oldRightTime=0f;
+    private float leftTime=0f;
+    private float oldLeftTime=0f;
 
     public GameObject characterRight;
     public GameObject characterLeft;
@@ -38,12 +42,12 @@ public class KrakenMain : MonoBehaviour
 	private Vector3 initialRotationRight;
 	private Vector3 initialRotationLeft;
 
-    public Vector3 shootMovement = new Vector3(-100f, 0f, 0f);
+   // public Vector3 shootMovement = new Vector3(100f, 0f, 100f);
 
     // Use this for initialization
     void Start()
     {
-        canonBall = GameObject.Find("CanonBall");
+        //canonBall = GameObject.Find("CanonBall");
         characterRight = GameObject.Find("CharacterRight");
         characterLeft = GameObject.Find("CharacterLeft");
 
@@ -196,24 +200,27 @@ public class KrakenMain : MonoBehaviour
         // Right Canon
         if (canon.transform.position.x > 0)
         {
-            bullet = (GameObject)Instantiate(canonBall, new Vector3(6f, canonPositionY, -2.27f), Quaternion.identity);
-            bulletRigid = bullet.GetComponent<Rigidbody>();
-            bulletRigid.AddForce(shootMovement);
-
-
-            ////Debug.Log("Bullet X position " + bullet.transform.position.x);
-            ////Once the bullet is fired, we cannot control them anymore
-            //if (bullet.transform.position.x < 0)
-            //{
-            //    Debug.Log("Bullet X position " + bullet.transform.position.x);
-            //    bullet.transform.position -= drawnMovement;
-            //}
+            rightTime = Time.time;
+            var rtime = rightTime - oldRightTime;
+            if (rtime > 0.3f)
+            { 
+                bullet = (GameObject)Instantiate(canonBall, new Vector3(5f, canonPositionY, -1.01f), Quaternion.identity);
+                bulletRigid = bullet.GetComponent<Rigidbody>();
+                bulletRigid.AddForce(-100f,0f,0f);
+                oldRightTime = rightTime;
+            }
         }
         else
         {
-            bullet = (GameObject)Instantiate(canonBall, new Vector3(-6f, canonPositionY, -2.27f), Quaternion.identity);
-            bulletRigid = bullet.GetComponent<Rigidbody>();
-            bulletRigid.AddForce(-shootMovement);
+            leftTime = Time.time;
+            var ltime = leftTime - oldLeftTime;
+            if (ltime > 0.3f) {
+                bullet = (GameObject)Instantiate(canonBall, new Vector3(-5f, canonPositionY, -1.01f), Quaternion.identity);
+                bulletRigid = bullet.GetComponent<Rigidbody>();
+                bulletRigid.AddForce(100f, 0f, 0f);
+                oldLeftTime = leftTime;
+            }
+            
         }
 
     }
