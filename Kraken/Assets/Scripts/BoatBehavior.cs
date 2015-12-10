@@ -33,7 +33,7 @@ public class BoatBehavior : MonoBehaviour
         {
             if (col == kraken)
             {
-                Application.LoadLevel("Kraken");
+                Application.LoadLevel("Ready");
             }
         }
         if (yeti != null)

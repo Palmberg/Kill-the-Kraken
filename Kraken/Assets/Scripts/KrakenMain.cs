@@ -23,6 +23,8 @@ public class KrakenMain : MonoBehaviour
     public GameObject canonLeftMid;
     public GameObject canonLeftDown;
 
+    //public GameObject kraken;
+
     public GameObject canonBall;
     public GameObject bullet;
     public Rigidbody bulletRigid;
@@ -41,12 +43,16 @@ public class KrakenMain : MonoBehaviour
 	private Animator animRightCharacter;
 	private Vector3 initialRotationRight;
 	private Vector3 initialRotationLeft;
+    //public GameObject monster;
+    //Monster script;
 
-   // public Vector3 shootMovement = new Vector3(100f, 0f, 100f);
+    // public Vector3 shootMovement = new Vector3(100f, 0f, 100f);
 
     // Use this for initialization
     void Start()
     {
+        //script = (Monster)kraken.GetComponent<Monster>();
+        //script.reset();
         //canonBall = GameObject.Find("CanonBall");
         characterRight = GameObject.Find("CharacterRight");
         characterLeft = GameObject.Find("CharacterLeft");

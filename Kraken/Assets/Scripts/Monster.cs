@@ -1,25 +1,49 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Monster : MonoBehaviour 
 {
 	public float maxRange = 4.5f;
-	public float moveSpeed = 1f;
-	public float speed = 100;
-	public float slowTime;
+	public float moveSpeed;
+//	public float slowTime;
 	public Vector3 monsterPosition;
+	private Vector3 originalPosition = new Vector3 (0f, 0f, 0f);
+	private Vector3 smallerSize = new Vector3(0.8F, 0.8f, 1f);
+	private Vector3 smallestSize = new Vector3(0.6F, 0.6f, 1f);
+
+	public Text winText;
+    public GameObject wText;
+    public GameObject lText;
+    public GameObject backButton;
+
+
 
 	//public float attackReduce = 1f;
 	private int attackFromRight = 0;
 	private int attackFromLeft = 0;
 
-	private bool moveRandomly = true;
-	Rigidbody rb;
+	private int totalAttack = 0;
 
+	private bool moveRandomly = true;
+	private GameObject rightPlayer;
+	private GameObject leftPlayer;
+
+	private GameObject rightHert1;
+	private GameObject rightHert2;
+	private GameObject rightHert3;
+
+	private GameObject leftHert1;
+	private GameObject leftHert2;
+	private GameObject leftHert3;
+	
 	private float moveRate = 0.2f;
 	private float initialTime = 0.0F;
 
 	private bool moveToRight;
+
+	private int rightPlayerDeath = 0;
+	private int leftPlayerDeath = 0;
 	// Use this for initialization
 	void Start () 
 	{
@@ -27,11 +51,31 @@ public class Monster : MonoBehaviour
 			moveToRight = true;
 		else
 			moveToRight = false;
+        wText.SetActive(false);
+        lText.SetActive(false);
+        backButton.SetActive(false);
+
+		winText.text = "";
+
+		rightPlayer = GameObject.Find("CharacterRight");
+		leftPlayer = GameObject.Find("CharacterLeft");
+
+		rightHert1 = GameObject.Find ("rh1");
+		rightHert2 = GameObject.Find ("rh2");
+		rightHert3 = GameObject.Find ("rh3");
+
+		leftHert1 = GameObject.Find ("lh1");
+		leftHert2 = GameObject.Find ("lh2");
+		leftHert3 = GameObject.Find ("lh3");
+
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		Debug.Log("Total : " + totalAttack);
 		if (moveRandomly & Time.time > initialTime) 
 		{ 
 			moveRandom();
@@ -48,12 +92,90 @@ public class Monster : MonoBehaviour
 			initialTime = Time.time + moveRate;
 		}
 
-        //Win
-        Debug.Log(attackFromRight+attackFromLeft);
-		if(attackFromLeft + attackFromRight > 40)
+		if (totalAttack > 20 && totalAttack < 30) 
 		{
-            Debug.Log("win");
-			Destroy(this.gameObject);
+			Debug.Log("Smaller");
+			transform.localScale = smallerSize;
+		}
+		if (totalAttack >= 30 && totalAttack < 50) 
+		{
+			Debug.Log("Smallest");
+
+			transform.localScale = smallestSize;
+		}
+
+
+        //Win
+		if(totalAttack > 40)
+		{
+            //winText.text = "You Win!!";
+            wText.SetActive(true);
+			gameObject.SetActive(false);
+            backButton.SetActive(true);
+			//Destroy(this.gameObject);
+		}
+
+		//Lose
+		if(transform.position.x > maxRange)
+		{
+			Debug.Log("Death Times Right:" + rightPlayerDeath);
+			rightPlayerDeath++;
+
+			if(rightHert1.activeSelf)
+			{
+				rightHert1.SetActive(false);
+			}
+			else if(rightHert2.activeSelf)
+			{
+				rightHert2.SetActive(false);
+			}
+			else
+			{
+				rightHert3.SetActive(false);
+			}
+
+			transform.position = originalPosition;
+			attackFromRight = 0;
+			attackFromLeft = 0;
+			rotateToLeft();
+			moveLeft(attackFromLeft);
+		}
+		if(transform.position.x < -maxRange)
+		{
+			Debug.Log("Death Times Left:" + leftPlayerDeath);
+			leftPlayerDeath++;
+
+			if(leftHert1.activeSelf)
+			{
+				leftHert1.SetActive(false);
+			}
+			else if(rightHert2.activeSelf)
+			{
+				leftHert2.SetActive(false);
+			}
+			else
+			{
+				leftHert3.SetActive(false);
+			}
+
+			transform.position = originalPosition;
+			attackFromRight = 0;
+			attackFromLeft = 0;
+			rotateToRight();
+			moveRight(attackFromRight);
+		}
+
+		if(leftPlayerDeath > 2 || rightPlayerDeath > 2)
+		{
+            //Lose
+            //winText.text = "Try Again";
+            lText.SetActive(true);
+			leftPlayer.SetActive(false);
+			rightPlayer.SetActive(false);
+            backButton.SetActive(true);
+            //Application.LoadLevel("World");
+//			Destroy(leftPlayer);
+//			Destroy(rightPlayer);
 		}
 
 	}
@@ -117,7 +239,7 @@ public class Monster : MonoBehaviour
 	void OnCollisionEnter (Collision col)
 	{
 		moveRandomly = false;
-
+		totalAttack++;
 		//Debug.Log("Collision Happens");
 
 		if(col.transform.position.x > transform.position.x)
@@ -143,10 +265,11 @@ public class Monster : MonoBehaviour
 		} else if (transform.position.y < -maxRange) {
 			ranY = 5f;
 		} else {
-			ranY = Random.Range (-2.5f, 2.5f);
+			ranY = Random.Range (0f, 2.5f);
 		}
 		Vector3 randomMovement = new Vector3 (2f, ranY, 0);
-		transform.position += (randomMovement / moveSpeed) *( attacks / 25 );
+		float increase = attacks / 25f;
+		transform.position += (randomMovement / moveSpeed) * increase;
 	}
 	void moveLeft(int attacks)
 	{
@@ -163,10 +286,63 @@ public class Monster : MonoBehaviour
 		} else if (transform.position.y < -maxRange) {
 			ranY = 5f;
 		} else {
-			ranY = Random.Range (-2.5f, 2.5f);
+			ranY = Random.Range (-2.5f, 0f);
 		}
 		
 		Vector3 randomMovement = new Vector3 (-2f, ranY, 0);
-		transform.position += (randomMovement / moveSpeed) *( attacks / 25 );
+		float increase = attacks / 25f;
+		transform.position += (randomMovement / moveSpeed) * increase;
+		//transform.position += (randomMovement / moveSpeed) *( attacks / 25 );
 	}
+    public void reset()
+    {
+        if (gameObject.activeSelf == false)
+        {
+            gameObject.SetActive(true);
+        }
+        if (rightPlayer.activeSelf == false)
+        {
+            rightPlayer.SetActive(true);
+        }
+        if (leftPlayer.activeSelf == false)
+        {
+            leftPlayer.SetActive(true);
+        }
+        if (rightHert1.activeSelf == false)
+        {
+            rightHert1.SetActive(true);
+        }
+        if (rightHert2.activeSelf == false)
+        {
+            rightHert2.SetActive(true);
+        }
+        if (rightHert3.activeSelf == false)
+        {
+            rightHert3.SetActive(true);
+        }
+        if (leftHert1.activeSelf == false)
+        {
+            leftHert1.SetActive(true);
+        }
+        if (leftHert2.activeSelf == false)
+        {
+            leftHert2.SetActive(true);
+        }
+        if (leftHert3.activeSelf == false)
+        {
+            leftHert3.SetActive(true);
+        }
+        if (wText.activeSelf == true)
+        {
+            wText.SetActive(false);
+        }
+        if (lText.activeSelf == true)
+        {
+            lText.SetActive(false);
+        }
+        if (backButton.activeSelf == true)
+        {
+            backButton.SetActive(false);
+        }
+    }
 }
