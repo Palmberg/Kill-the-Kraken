@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class Monster : MonoBehaviour 
 {
+    public AudioSource loseLife;
+    public AudioSource gameOver;
+    public AudioSource fightMusic;
 	public float maxRange = 4.5f;
 	public float moveSpeed;
 //	public float slowTime;
@@ -124,16 +127,21 @@ public class Monster : MonoBehaviour
 			if(rightHert1.activeSelf)
 			{
 				rightHert1.SetActive(false);
-			}
+
+                loseLife.Play();
+            }
 			else if(rightHert2.activeSelf)
 			{
 				rightHert2.SetActive(false);
-			}
+
+                loseLife.Play();
+            }
 			else
 			{
 				rightHert3.SetActive(false);
-			}
-
+                fightMusic.Stop();
+                gameOver.Play();
+            }
 			transform.position = originalPosition;
 			attackFromRight = 0;
 			attackFromLeft = 0;
@@ -148,17 +156,22 @@ public class Monster : MonoBehaviour
 			if(leftHert1.activeSelf)
 			{
 				leftHert1.SetActive(false);
-			}
+
+                loseLife.Play();
+            }
 			else if(rightHert2.activeSelf)
 			{
 				leftHert2.SetActive(false);
-			}
+
+                loseLife.Play();
+            }
 			else
 			{
 				leftHert3.SetActive(false);
-			}
-
-			transform.position = originalPosition;
+                fightMusic.Stop();
+                gameOver.Play();
+            }
+            transform.position = originalPosition;
 			attackFromRight = 0;
 			attackFromLeft = 0;
 			rotateToRight();
@@ -169,6 +182,7 @@ public class Monster : MonoBehaviour
 		{
             //Lose
             //winText.text = "Try Again";
+            
             lText.SetActive(true);
 			leftPlayer.SetActive(false);
 			rightPlayer.SetActive(false);

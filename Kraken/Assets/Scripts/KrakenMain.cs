@@ -212,7 +212,7 @@ public class KrakenMain : MonoBehaviour
             { 
                 bullet = (GameObject)Instantiate(canonBall, new Vector3(5f, canonPositionY, -1.01f), Quaternion.identity);
                 bulletRigid = bullet.GetComponent<Rigidbody>();
-                bulletRigid.AddForce(-100f,0f,0f);
+                bulletRigid.AddForce(-300f,0f,0f);
                 oldRightTime = rightTime;
             }
         }
@@ -223,7 +223,7 @@ public class KrakenMain : MonoBehaviour
             if (ltime > 0.3f) {
                 bullet = (GameObject)Instantiate(canonBall, new Vector3(-5f, canonPositionY, -1.01f), Quaternion.identity);
                 bulletRigid = bullet.GetComponent<Rigidbody>();
-                bulletRigid.AddForce(100f, 0f, 0f);
+                bulletRigid.AddForce(300f, 0f, 0f);
                 oldLeftTime = leftTime;
             }
             

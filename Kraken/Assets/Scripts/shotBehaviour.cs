@@ -13,7 +13,7 @@ public class shotBehaviour : MonoBehaviour {
 	void Update () {
         moveTime = Time.time;
         var tmp = moveTime - initTime;
-        if (tmp > 5)
+        if (tmp > 1.7f)
         {
             Destroy(gameObject);
         }
